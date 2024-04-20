@@ -1,7 +1,7 @@
 obj-m += als.o
 
-KVERSION := $(shell uname -r)
-KDIR := /lib/modules/$(KVERSION)/build
+KERNELRELEASE := $(shell uname -r)
+KDIR := /lib/modules/$(KERNELRELEASE)/build
 PWD := $(shell pwd)
 
 all:
@@ -12,7 +12,3 @@ clean:
 
 install:
 	$(MAKE) -C $(KDIR) M=$(PWD) modules_install
-
-load:
-	-/sbin/rmmod als
-	/sbin/insmod als.ko
