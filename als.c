@@ -50,7 +50,7 @@ static u32 als_get_enable(void)
 static ssize_t als_show_ali(struct device *dev,
                             struct device_attribute *attr, char *buf)
 {
-    struct acpi_device *device = to_acpi_device(dev);
+    struct acpi_device *device;
 
     device = to_acpi_device(dev);
 
@@ -161,8 +161,7 @@ static struct acpi_driver als_driver = {
         .add = als_add,
         .remove = als_remove,
         .notify = als_notify
-    },
-    .owner = THIS_MODULE,
+    }
 };
 
 module_acpi_driver(als_driver);
